@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title> Face Recog </title>
+		<style>
+			*{
+				margin: 0;
+				padding:0;
+			}
+		
+			#inputVideo{
+				height: 500px;
+				width: 500px;
+			}
+			
+			#overlay{
+				position: absolute;
+				top:0;
+				left:0;
+				height: 500px;
+				width: 500px;
+				
+			}
+			h1{
+				position: absolute;
+				right:0;
+				top:0;
+			}
+			button{
+				width:500px;
+				height:100px;
+			}
+			.section{
+				height:400px;
+				position: absolute;
+				right: 60;
+				top:60;
+				width: 600px;
+				text-align:center;
+				border: 1px solid black;
+			}
+			#nagan{
+				font-size: 50px;
+			}
+			.result{
+				height: 100%;
+				
+				text-align:center;
+			}
+			#picture{
+				height: 100px;
+				width: 100px;
+				
+			}
+			ul{
+				list-style: none;
+			}
+		</style>
+    </head>
+    <body>
+	<div id="app">
+
+	
+	<div style="position: relative" class="margin">
+		<video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
+		<h1 style="position:absolute; left:225; top:300; color:white" v-if="countdown != 0 && countdown != 5">
+			{{countdown}}
+		</h1>
+		<h1 style="position:absolute; left:218; top:300; color:white" v-if="verifying">
+			Verifying
+		</h1>
+		<canvas id="overlay" />
+    </div>
+	
+	<button id="take-photo">Train Model</button>
+	
+	
+	<div class="section">
+		Face Recognition
+		<br>
+		<br>
+		<br>
+		<hr>
+		<div class="result">
+			
+			<h3>Today Attendace List</h3>
+			<h4>{{date}}</h4>
+			<ul>
+				<li v-for="item in attendance">
+					{{item.name}} : {{item.time}}
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+    </div>
+	<script src="download.js"></script>
+	<script src="vue.js"></script>
+    <script src="tensorflow.js"></script>
+	<script src="renzmodel.js"></script>
+    <script src="index.js"></script>
+    </body>
+</html>
